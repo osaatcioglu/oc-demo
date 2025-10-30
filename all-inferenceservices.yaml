@@ -1,0 +1,386 @@
+apiVersion: v1
+items:
+- apiVersion: serving.kserve.io/v1beta1
+  kind: InferenceService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.kserve.io/v1beta1","kind":"InferenceService","metadata":{"annotations":{"openshift.io/display-name":"inferenceservice-embedding-qwen3-8b","serving.knative.openshift.io/enablePassthrough":"true","serving.kserve.io/deploymentMode":"Serverless","sidecar.istio.io/inject":"true","sidecar.istio.io/rewriteAppHTTPProbers":"true"},"labels":{"opendatahub.io/dashboard":"true"},"name":"inferenceservice-embedding-qwen3-8b","namespace":"keda"},"spec":{"predictor":{"automountServiceAccountToken":false,"maxReplicas":1,"minReplicas":1,"model":{"modelFormat":{"name":"vLLM"},"name":"","resources":{"limits":{"cpu":"2","memory":"8Gi","nvidia.com/gpu":"1"},"requests":{"cpu":"1","memory":"4Gi","nvidia.com/gpu":"1"}},"runtime":"servingruntime-embedding-qwen3-8b","storageUri":"pvc://pvc-embedding-qwen3-8b"}}}}
+      openshift.io/display-name: inferenceservice-embedding-qwen3-8b
+      serving.knative.openshift.io/enablePassthrough: "true"
+      serving.kserve.io/deploymentMode: Serverless
+      sidecar.istio.io/inject: "true"
+      sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    finalizers:
+    - inferenceservice.finalizers
+    - odh.inferenceservice.finalizers
+    labels:
+      opendatahub.io/dashboard: "true"
+    managedFields:
+    - apiVersion: serving.kserve.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:finalizers:
+            .: {}
+            v:"inferenceservice.finalizers": {}
+            v:"odh.inferenceservice.finalizers": {}
+      manager: manager
+      operation: Update
+      time: "2025-10-27T12:58:29Z"
+    - apiVersion: serving.kserve.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:openshift.io/display-name: {}
+            f:serving.knative.openshift.io/enablePassthrough: {}
+            f:serving.kserve.io/deploymentMode: {}
+            f:sidecar.istio.io/inject: {}
+            f:sidecar.istio.io/rewriteAppHTTPProbers: {}
+          f:labels:
+            .: {}
+            f:opendatahub.io/dashboard: {}
+        f:spec:
+          .: {}
+          f:predictor:
+            .: {}
+            f:automountServiceAccountToken: {}
+            f:maxReplicas: {}
+            f:minReplicas: {}
+            f:model:
+              .: {}
+              f:modelFormat:
+                .: {}
+                f:name: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+                  f:nvidia.com/gpu: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+                  f:nvidia.com/gpu: {}
+              f:runtime: {}
+              f:storageUri: {}
+      manager: oc
+      operation: Update
+      time: "2025-10-27T12:58:29Z"
+    - apiVersion: serving.kserve.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:address:
+            .: {}
+            f:url: {}
+          f:components:
+            .: {}
+            f:predictor:
+              .: {}
+              f:address:
+                .: {}
+                f:url: {}
+              f:latestCreatedRevision: {}
+              f:latestReadyRevision: {}
+              f:latestRolledoutRevision: {}
+              f:traffic: {}
+              f:url: {}
+          f:conditions: {}
+          f:deploymentMode: {}
+          f:modelStatus:
+            .: {}
+            f:copies:
+              .: {}
+              f:failedCopies: {}
+              f:totalCopies: {}
+            f:states:
+              .: {}
+              f:activeModelState: {}
+              f:targetModelState: {}
+            f:transitionStatus: {}
+          f:observedGeneration: {}
+          f:url: {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: "2025-10-27T13:00:17Z"
+    name: inferenceservice-embedding-qwen3-8b
+    namespace: keda
+  spec:
+    predictor:
+      automountServiceAccountToken: false
+      maxReplicas: 1
+      minReplicas: 1
+      model:
+        modelFormat:
+          name: vLLM
+        name: ""
+        resources:
+          limits:
+            cpu: "2"
+            memory: 8Gi
+            nvidia.com/gpu: "1"
+          requests:
+            cpu: "1"
+            memory: 4Gi
+            nvidia.com/gpu: "1"
+        runtime: servingruntime-embedding-qwen3-8b
+        storageUri: pvc://pvc-embedding-qwen3-8b
+  status:
+    address:
+      url: https://inferenceservice-embedding-qwen3-8b.keda.svc.cluster.local
+    components:
+      predictor:
+        address:
+          url: http://inferenceservice-embedding-qwen3-8b-predictor.keda.svc.cluster.local
+        latestCreatedRevision: inferenceservice-embedding-qwen3-8b-predictor-00001
+        latestReadyRevision: inferenceservice-embedding-qwen3-8b-predictor-00001
+        latestRolledoutRevision: inferenceservice-embedding-qwen3-8b-predictor-00001
+        traffic:
+        - latestRevision: true
+          percent: 100
+          revisionName: inferenceservice-embedding-qwen3-8b-predictor-00001
+        url: https://inferenceservice-embedding-qwen3-8b-predictor-keda.apps.ai.odine.tech
+    conditions:
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      status: "True"
+      type: IngressReady
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      severity: Info
+      status: "True"
+      type: LatestDeploymentReady
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      severity: Info
+      status: "True"
+      type: PredictorConfigurationReady
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      status: "True"
+      type: PredictorReady
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      severity: Info
+      status: "True"
+      type: PredictorRouteReady
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2025-10-27T13:00:17Z"
+      severity: Info
+      status: "True"
+      type: RoutesReady
+    - lastTransitionTime: "2025-10-27T12:58:29Z"
+      severity: Info
+      status: "False"
+      type: Stopped
+    deploymentMode: Serverless
+    modelStatus:
+      copies:
+        failedCopies: 0
+        totalCopies: 1
+      states:
+        activeModelState: Loaded
+        targetModelState: Loaded
+      transitionStatus: UpToDate
+    observedGeneration: 1
+    url: https://inferenceservice-embedding-qwen3-8b-keda.apps.ai.odine.tech
+- apiVersion: serving.kserve.io/v1beta1
+  kind: InferenceService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.kserve.io/v1beta1","kind":"InferenceService","metadata":{"annotations":{"openshift.io/display-name":"inferenceservice-llm-qwen3-32b-fp8","serving.knative.dev/timeout-seconds":"180","serving.knative.openshift.io/enablePassthrough":"true","serving.kserve.io/deploymentMode":"Serverless","sidecar.istio.io/inject":"true","sidecar.istio.io/rewriteAppHTTPProbers":"true"},"labels":{"opendatahub.io/dashboard":"true"},"name":"inferenceservice-llm-qwen3-32b-fp8","namespace":"keda"},"spec":{"predictor":{"automountServiceAccountToken":false,"maxReplicas":1,"minReplicas":1,"model":{"modelFormat":{"name":"vLLM"},"name":"","resources":{"limits":{"cpu":"16","memory":"80Gi","nvidia.com/gpu":"2"},"requests":{"cpu":"12","memory":"32Gi","nvidia.com/gpu":"2"}},"runtime":"servingruntime-llm-qwen3-32b-fp8","storageUri":"pvc://pvc-llm-qwen3-32b-fp8"}}}}
+      openshift.io/display-name: inferenceservice-llm-qwen3-32b-fp8
+      serving.knative.dev/timeout-seconds: "180"
+      serving.knative.openshift.io/enablePassthrough: "true"
+      serving.kserve.io/deploymentMode: Serverless
+      sidecar.istio.io/inject: "true"
+      sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    finalizers:
+    - inferenceservice.finalizers
+    - odh.inferenceservice.finalizers
+    labels:
+      opendatahub.io/dashboard: "true"
+    managedFields:
+    - apiVersion: serving.kserve.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:finalizers:
+            .: {}
+            v:"inferenceservice.finalizers": {}
+            v:"odh.inferenceservice.finalizers": {}
+      manager: manager
+      operation: Update
+      time: "2025-10-27T12:39:37Z"
+    - apiVersion: serving.kserve.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:openshift.io/display-name: {}
+            f:serving.knative.dev/timeout-seconds: {}
+            f:serving.knative.openshift.io/enablePassthrough: {}
+            f:serving.kserve.io/deploymentMode: {}
+            f:sidecar.istio.io/inject: {}
+            f:sidecar.istio.io/rewriteAppHTTPProbers: {}
+          f:labels:
+            .: {}
+            f:opendatahub.io/dashboard: {}
+        f:spec:
+          .: {}
+          f:predictor:
+            .: {}
+            f:automountServiceAccountToken: {}
+            f:maxReplicas: {}
+            f:minReplicas: {}
+            f:model:
+              .: {}
+              f:modelFormat:
+                .: {}
+                f:name: {}
+              f:name: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+                  f:nvidia.com/gpu: {}
+                f:requests:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+                  f:nvidia.com/gpu: {}
+              f:runtime: {}
+              f:storageUri: {}
+      manager: oc
+      operation: Update
+      time: "2025-10-27T12:39:37Z"
+    - apiVersion: serving.kserve.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:address:
+            .: {}
+            f:url: {}
+          f:components:
+            .: {}
+            f:predictor:
+              .: {}
+              f:address:
+                .: {}
+                f:url: {}
+              f:latestCreatedRevision: {}
+              f:latestReadyRevision: {}
+              f:latestRolledoutRevision: {}
+              f:traffic: {}
+              f:url: {}
+          f:conditions: {}
+          f:deploymentMode: {}
+          f:modelStatus:
+            .: {}
+            f:copies:
+              .: {}
+              f:failedCopies: {}
+              f:totalCopies: {}
+            f:states:
+              .: {}
+              f:activeModelState: {}
+              f:targetModelState: {}
+            f:transitionStatus: {}
+          f:observedGeneration: {}
+          f:url: {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: "2025-10-27T12:45:34Z"
+    name: inferenceservice-llm-qwen3-32b-fp8
+    namespace: keda
+  spec:
+    predictor:
+      automountServiceAccountToken: false
+      maxReplicas: 1
+      minReplicas: 1
+      model:
+        modelFormat:
+          name: vLLM
+        name: ""
+        resources:
+          limits:
+            cpu: "16"
+            memory: 80Gi
+            nvidia.com/gpu: "2"
+          requests:
+            cpu: "12"
+            memory: 32Gi
+            nvidia.com/gpu: "2"
+        runtime: servingruntime-llm-qwen3-32b-fp8
+        storageUri: pvc://pvc-llm-qwen3-32b-fp8
+  status:
+    address:
+      url: https://inferenceservice-llm-qwen3-32b-fp8.keda.svc.cluster.local
+    components:
+      predictor:
+        address:
+          url: http://inferenceservice-llm-qwen3-32b-fp8-predictor.keda.svc.cluster.local
+        latestCreatedRevision: inferenceservice-llm-qwen3-32b-fp8-predictor-00001
+        latestReadyRevision: inferenceservice-llm-qwen3-32b-fp8-predictor-00001
+        latestRolledoutRevision: inferenceservice-llm-qwen3-32b-fp8-predictor-00001
+        traffic:
+        - latestRevision: true
+          percent: 100
+          revisionName: inferenceservice-llm-qwen3-32b-fp8-predictor-00001
+        url: https://inferenceservice-llm-qwen3-32b-fp8-predictor-keda.apps.ai.odine.tech
+    conditions:
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      status: "True"
+      type: IngressReady
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      severity: Info
+      status: "True"
+      type: LatestDeploymentReady
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      severity: Info
+      status: "True"
+      type: PredictorConfigurationReady
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      status: "True"
+      type: PredictorReady
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      severity: Info
+      status: "True"
+      type: PredictorRouteReady
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2025-10-27T12:45:34Z"
+      severity: Info
+      status: "True"
+      type: RoutesReady
+    - lastTransitionTime: "2025-10-27T12:39:37Z"
+      severity: Info
+      status: "False"
+      type: Stopped
+    deploymentMode: Serverless
+    modelStatus:
+      copies:
+        failedCopies: 0
+        totalCopies: 1
+      states:
+        activeModelState: Loaded
+        targetModelState: Loaded
+      transitionStatus: UpToDate
+    observedGeneration: 1
+    url: https://inferenceservice-llm-qwen3-32b-fp8-keda.apps.ai.odine.tech
+kind: List
+metadata:
