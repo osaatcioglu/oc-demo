@@ -10,7 +10,7 @@ metadata:
   labels:
     opendatahub.io/dashboard: "true"
   name: inferenceservice-embedding-qwen3-8b
-  namespace: halkbank-demo
+  namespace: keda
 spec:
   predictor:
     automountServiceAccountToken: false
