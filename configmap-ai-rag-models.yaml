@@ -7,42 +7,9 @@ data:
   BUCKET_SUBREGION: ""
 kind: ConfigMap
 metadata:
-  finalizers:
-  - objectbucket.io/finalizer
   labels:
     app: noobaa
     bucket-provisioner: openshift-storage.noobaa.io-obc
     noobaa-domain: openshift-storage.noobaa.io
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:data:
-        .: {}
-        f:BUCKET_HOST: {}
-        f:BUCKET_NAME: {}
-        f:BUCKET_PORT: {}
-        f:BUCKET_REGION: {}
-        f:BUCKET_SUBREGION: {}
-      f:metadata:
-        f:finalizers:
-          .: {}
-          v:"objectbucket.io/finalizer": {}
-        f:labels:
-          .: {}
-          f:app: {}
-          f:bucket-provisioner: {}
-          f:noobaa-domain: {}
-        f:ownerReferences:
-          .: {}
-    manager: noobaa-operator
-    operation: Update
-    time: "2025-10-14T08:35:38Z"
   name: ai-rag-models
   namespace: keda
-  ownerReferences:
-  - apiVersion: objectbucket.io/v1alpha1
-    blockOwnerDeletion: true
-    controller: true
-    kind: ObjectBucketClaim
-    name: ai-rag-models
